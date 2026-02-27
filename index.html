@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal404 - Deepfake Audio Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" stroke="url(#gradient1)" stroke-width="2"/>
+                    <path d="M15 20C15 20 17 15 20 15C23 15 25 20 25 20C25 20 23 25 20 25C17 25 15 20 15 20Z" fill="url(#gradient1)"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#06b6d4"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">Signal<span class="logo-404">404</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#anatomy">How It Works</a>
+                <a href="#detection">Detection Lab</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#anatomy" onclick="toggleMobileMenu()">How It Works</a>
+        <a href="#detection" onclick="toggleMobileMenu()">Detection Lab</a>
+        <a href="#team" onclick="toggleMobileMenu()">Team</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Section 1: Hero/Landing Page -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">AI-Powered Detection System</span>
+                <h1 class="hero-title">
+                    <span class="signal-404-hero">Signal<span class="four-zero-four">404</span></span><br>
+                    Detect <span class="gradient-text">Deepfake Audio</span> in Real-Time
+                </h1>
+                <p class="hero-description">
+                    Advanced machine learning technology that identifies synthetic voice manipulation 
+                    with unprecedented accuracy. Protect yourself from audio fraud and misinformation.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#detection" class="btn btn-primary">
+                        Try Detection Lab
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 3L14 10L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>89%</h3>
+                        <p>Accuracy Rate</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>&lt;15s</h3>
+                        <p>Detection Time</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>40K+</h3>
+                        <p>Samples Analyzed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="audio-wave-container">
+                    <canvas id="audioWaveCanvas"></canvas>
+                    <div class="wave-overlay">
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring delay-1"></div>
+                        <div class="pulse-ring delay-2"></div>
+                        <div class="signal-404-overlay">
+                            <span class="glitch-text">SIGNAL</span>
+                            <span class="glitch-text-404">404</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section 2: Visual Hero -->
+    <section class="visual-hero">
+        <div class="container">
+            <div class="visual-grid">
+                <div class="visual-card">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 8V40M24 8C20 8 16 12 16 16V32C16 36 20 40 24 40M24 8C28 8 32 12 32 16V32C32 36 28 40 24 40" stroke="url(#grad2)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad2" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#a855f7"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Real-Time Analysis</h3>
+                    <p>Instant deepfake detection as audio is recorded or uploaded</p>
+                </div>
+                <div class="visual-card">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M24 4L28 16H40L30 24L34 36L24 28L14 36L18 24L8 16H20L24 4Z" stroke="url(#grad3)" stroke-width="3" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="grad3" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#ec4899"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Advanced ML Models</h3>
+                    <p>Trained on authentic and synthetic voice samples</p>
+                </div>
+                <div class="visual-card">
+                    <div class="icon-box">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="12" stroke="url(#grad4)" stroke-width="3"/>
+                            <path d="M24 12V24L30 30" stroke="url(#grad4)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad4" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#06b6d4"/>
+                                    <stop offset="100%" stop-color="#10b981"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your audio data is processed securely and never stored</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-badge">About the Project</span>
+                    <h2>Combating Audio Deepfakes with <span class="gradient-text">Machine Learning</span></h2>
+                    <p>
+                        In an era where synthetic voices are becoming increasingly sophisticated, 
+                        Signal404 provides a robust solution to identify manipulated audio content. 
+                        Our system leverages cutting-edge deep learning algorithms to analyze acoustic 
+                        patterns that distinguish real from fake audio.
+                    </p>
+                    <p>
+                        This Project explores multiple machine learning approaches including 
+                        neural networks and transformer-based architectures to achieve state-of-the-art detection accuracy.
+                    </p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Multi-model ensemble approach</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Spectrogram & MFCC analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Real-time processing capability</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Explainable AI visualization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <div class="tech-icon">ML</div>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">CNN</div>
+                            <span>Neural Networks</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">DSP</div>
+                            <span>Signal Processing</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">AI</div>
+                            <span>Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Anatomy Page -->
+    <section id="anatomy" class="anatomy-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">How It Works</span>
+                <h2>The Anatomy of <span class="gradient-text">Detection</span></h2>
+                <p>Three powerful steps to identify deepfake audio with unprecedented accuracy</p>
+            </div>
+            <div class="anatomy-steps">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path d="M32 12V52M20 24L32 12L44 24" stroke="url(#grad5)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad5" x1="0" y1="0" x2="64" y2="64">
+                                    <stop offset="0%" stop-color="#a855f7"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Audio Ingestion</h3>
+                    <p class="step-subtitle">Data Collection & Preprocessing</p>
+                    <p>Upload audio files in multiple formats (mp3, wav, flac) or record directly. Our system securely processes files up to 50MB with real-time upload tracking.</p>
+                    <ul class="step-features">
+                        <li>Multi-format support (MP3, WAV, FLAC, OGG)</li>
+                        <li>Real-time upload progress tracking</li>
+                        <li>Secure encrypted transfer protocol</li>
+                        <li>Automatic format conversion</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="20" stroke="url(#grad6)" stroke-width="3"/>
+                            <path d="M22 32L28 38L42 24" stroke="url(#grad6)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad6" x1="0" y1="0" x2="64" y2="64">
+                                    <stop offset="0%" stop-color="#ec4899"/>
+                                    <stop offset="100%" stop-color="#8b5cf6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Neural Analysis</h3>
+                    <p class="step-subtitle">AI-Powered Processing</p>
+                    <p>Our engine extracts 154 unique audio markers ranging from MFCCs and spectral dynamics to harmonic chroma providing a deep-learning-ready fingerprint of every sound.</p>
+                    <ul class="step-features">
+                        <li>Spectrogram generation & analysis</li>
+                        <li>MFCC feature extraction (13 coefficients)</li>
+                        <li>Deep learning model inference</li>
+                        <li>Pattern recognition algorithms</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <rect x="12" y="32" width="40" height="20" rx="4" stroke="url(#grad7)" stroke-width="3"/>
+                            <path d="M22 42H42M28 32V22M36 32V26" stroke="url(#grad7)" stroke-width="3" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad7" x1="0" y1="0" x2="64" y2="64">
+                                    <stop offset="0%" stop-color="#06b6d4"/>
+                                    <stop offset="100%" stop-color="#10b981"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Result Verification</h3>
+                    <p class="step-subtitle">Confidence Scoring & Insights</p>
+                    <p>Instant probability scoring using trained model. Get detailed confidence metrics and artifact visualization with explainable AI insights.</p>
+                    <ul class="step-features">
+                        <li>Real-time confidence scoring (0-100%)</li>
+                        <li>Detailed probability intervals</li>
+                        <li>Visual artifact identification</li>
+                        <li>Exportable analysis reports</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tech-details">
+                <h3>Technical Architecture</h3>
+                <div class="tech-grid">
+                    <div class="tech-detail-card">
+                        <h4>Spectrogram Analysis</h4>
+                        <p>Visual frequency representation reveals hidden patterns invisible to the human ear</p>
+                    </div>
+                    <div class="tech-detail-card">
+                        <h4>MFCC Features</h4>
+                        <p>Mel-frequency cepstral coefficients capture unique vocal characteristics and anomalies</p>
+                    </div>
+                    <div class="tech-detail-card">
+                        <h4>Neural Network</h4>
+                        <p>Advanced transformer architecture trained on millions of authentic and synthetic samples</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Detection Lab -->
+    <section id="detection" class="detection-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Try It Yourself</span>
+                <h2>Detection <span class="gradient-text">Lab</span></h2>
+                <p>Upload or record audio to analyze for deepfake manipulation</p>
+            </div>
+
+            <div class="detection-lab">
+                <div class="upload-section">
+                    <div class="upload-methods">
+                        <div class="upload-card" onclick="document.getElementById('fileInput').click()">
+                            <div class="upload-icon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M24 32V12M24 12L16 20M24 12L32 20M12 36H36" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3>Upload Audio File</h3>
+                            <p>Drag & drop or click to select</p>
+                            <span class="file-types">Supports: MP3, WAV, FLAC, OGG, WEBM</span>
+                        </div>
+
+                        <div class="upload-card" onclick="toggleRecording()">
+                            <div class="upload-icon" id="recordIcon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <circle cx="24" cy="24" r="8" fill="currentColor"/>
+                                    <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <h3>Live Recording</h3>
+                            <p id="recordText">Click to start recording</p>
+                            <span class="file-types" id="recordTimer"></span>
+                        </div>
+                    </div>
+
+                    <input type="file" id="fileInput" accept="audio/*" style="display: none;" onchange="handleFileUpload(event)">
+
+                    <div class="audio-preview" id="audioPreview" style="display: none;">
+                        <div class="preview-header">
+                            <h4>Audio Preview</h4>
+                            <button onclick="clearAudio()" class="btn-clear">Clear</button>
+                        </div>
+                        <div class="waveform-container">
+                            <canvas id="waveformCanvas"></canvas>
+                        </div>
+                        <audio id="audioPlayer" controls></audio>
+                        <button onclick="analyzeAudio()" class="btn btn-primary analyze-btn">
+                            <span>Analyze Audio</span>
+                            <div class="loader" id="analysisLoader" style="display: none;"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Analysis Results</h3>
+                        <span class="result-badge" id="resultBadge"></span>
+                    </div>
+
+                    <div class="result-score">
+                        <div class="score-circle">
+                            <svg width="200" height="200" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" fill="none" stroke="#1e293b" stroke-width="10"/>
+                                <circle id="scoreCircle" cx="100" cy="100" r="90" fill="none" stroke="url(#scoreGradient)" stroke-width="10" 
+                                        stroke-dasharray="565.48" stroke-dashoffset="565.48" transform="rotate(-90 100 100)" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#a855f7"/>
+                                        <stop offset="100%" stop-color="#06b6d4"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="score-text">
+                                <span id="scoreValue" class="score-number">0</span>
+                                <span class="score-label">Authenticity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-details">
+                        <div class="detail-card">
+                            <h4>Confidence Level</h4>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="confidenceFill"></div>
+                            </div>
+                            <p id="confidenceText">High Confidence</p>
+                        </div>
+
+                        <div class="detail-card">
+                            <h4>Detection Metrics</h4>
+                            <div class="metrics">
+                                <div class="metric-item">
+                                    <span class="metric-label">Processing Time:</span>
+                                    <span class="metric-value" id="processingTime">--</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Audio Duration:</span>
+                                    <span class="metric-value" id="audioDuration">--</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Sample Rate:</span>
+                                    <span class="metric-value" id="sampleRate">--</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <h4>Analysis Summary</h4>
+                            <p id="analysisSummary" class="summary-text"></p>
+                        </div>
+
+                        <div class="detail-card">
+                            <h4>Feature Indicators</h4>
+                            <div class="indicators">
+                                <div class="indicator-item">
+                                    <span>Spectral Consistency</span>
+                                    <div class="indicator-bar">
+                                        <div class="indicator-fill" id="spectral"></div>
+                                    </div>
+                                </div>
+                                <div class="indicator-item">
+                                    <span>Temporal Coherence</span>
+                                    <div class="indicator-bar">
+                                        <div class="indicator-fill" id="temporal"></div>
+                                    </div>
+                                </div>
+                                <div class="indicator-item">
+                                    <span>MFCC Pattern</span>
+                                    <div class="indicator-bar">
+                                        <div class="indicator-fill" id="mfcc"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="analyzeAnother()" class="btn btn-secondary">Analyze Another Audio</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Team</span>
+                <h2>Meet the <span class="gradient-text">Innovators</span></h2>
+                <p>The brilliant minds behind Signal404</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Aimen Ijaz (Third/Short hair for her as per your request) -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/aimen.png" alt="Aimen Ijaz" class="team-photo">
+                    </div>
+                    <h3>Aimen Ijaz</h3>
+                    <p class="role">Electrical & ML Engineer</p>
+                    <p class="bio">Specializing in deep learning and audio signal processing with passion for AI research.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM7 15H5V8H7V15ZM6 7C5.45 7 5 6.55 5 6C5 5.45 5.45 5 6 5C6.55 5 7 5.45 7 6C7 6.55 6.55 7 6 7ZM15 15H13V11.5C13 10.95 12.55 10.5 12 10.5C11.45 10.5 11 10.95 11 11.5V15H9V8H11V9C11.55 8.55 12.22 8.25 13 8.25C14.38 8.25 15 9.13 15 10.5V15Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2C5.58 2 2 5.58 2 10C2 13.54 4.29 16.53 7.47 17.59C7.87 17.66 8.02 17.42 8.02 17.21C8.02 17.02 8.01 16.39 8.01 15.72C6 16.09 5.48 15.22 5.32 14.78C5.23 14.55 4.84 13.84 4.5 13.65C4.22 13.5 3.82 13.13 4.49 13.12C5.12 13.11 5.57 13.7 5.72 13.94C6.44 15.15 7.59 14.81 8.05 14.6C8.12 14.08 8.33 13.73 8.56 13.53C6.84 13.33 5.04 12.66 5.04 9.69C5.04 8.83 5.23 8.12 5.74 7.57C5.66 7.37 5.38 6.57 5.82 5.48C5.82 5.48 6.49 5.27 8.02 6.3C8.66 6.12 9.34 6.03 10.02 6.03C10.7 6.03 11.38 6.12 12.02 6.3C13.55 5.26 14.22 5.48 14.22 5.48C14.66 6.57 14.38 7.37 14.3 7.57C14.81 8.12 15 8.82 15 9.69C15 12.67 13.19 13.33 11.47 13.53C11.76 13.78 12.01 14.26 12.01 15.01C12.01 16.08 12 16.94 12 17.21C12 17.42 12.15 17.67 12.55 17.59C14.13 17.05 15.49 16 16.42 14.64C17.35 13.28 17.85 11.66 17.84 10C17.84 5.58 14.42 2 10 2Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hamdosh Latif (Long hair) -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/hamdosh.png" alt="Hamdosh Latif" class="team-photo">
+                    </div>
+                    <h3>Hamdosh Latif</h3>
+                    <p class="role">Electrical & ML Engineer</p>
+                    <p class="bio">Passionate about creating intuitive user experiences and modern web interfaces.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM7 15H5V8H7V15ZM6 7C5.45 7 5 6.55 5 6C5 5.45 5.45 5 6 5C6.55 5 7 5.45 7 6C7 6.55 6.55 7 6 7ZM15 15H13V11.5C13 10.95 12.55 10.5 12 10.5C11.45 10.5 11 10.95 11 11.5V15H9V8H11V9C11.55 8.55 12.22 8.25 13 8.25C14.38 8.25 15 9.13 15 10.5V15Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2C5.58 2 2 5.58 2 10C2 13.54 4.29 16.53 7.47 17.59C7.87 17.66 8.02 17.42 8.02 17.21C8.02 17.02 8.01 16.39 8.01 15.72C6 16.09 5.48 15.22 5.32 14.78C5.23 14.55 4.84 13.84 4.5 13.65C4.22 13.5 3.82 13.13 4.49 13.12C5.12 13.11 5.57 13.7 5.72 13.94C6.44 15.15 7.59 14.81 8.05 14.6C8.12 14.08 8.33 13.73 8.56 13.53C6.84 13.33 5.04 12.66 5.04 9.69C5.04 8.83 5.23 8.12 5.74 7.57C5.66 7.37 5.38 6.57 5.82 5.48C5.82 5.48 6.49 5.27 8.02 6.3C8.66 6.12 9.34 6.03 10.02 6.03C10.7 6.03 11.38 6.12 12.02 6.3C13.55 5.26 14.22 5.48 14.22 5.48C14.66 6.57 14.38 7.37 14.3 7.57C14.81 8.12 15 8.82 15 9.69C15 12.67 13.19 13.33 11.47 13.53C11.76 13.78 12.01 14.26 12.01 15.01C12.01 16.08 12 16.94 12 17.21C12 17.42 12.15 17.67 12.55 17.59C14.13 17.05 15.49 16 16.42 14.64C17.35 13.28 17.85 11.66 17.84 10C17.84 5.58 14.42 2 10 2Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ayesha Javed (Short hair) -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/ayesha.png" alt="Ayesha Javed" class="team-photo">
+                    </div>
+                    <h3>Ayesha Javed</h3>
+                    <p class="role">Electrical & ML Engineer</p>
+                    <p class="bio">Expert in Python, TensorFlow, and building scalable ML pipelines for production systems.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M16 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM7 15H5V8H7V15ZM6 7C5.45 7 5 6.55 5 6C5 5.45 5.45 5 6 5C6.55 5 7 5.45 7 6C7 6.55 6.55 7 6 7ZM15 15H13V11.5C13 10.95 12.55 10.5 12 10.5C11.45 10.5 11 10.95 11 11.5V15H9V8H11V9C11.55 8.55 12.22 8.25 13 8.25C14.38 8.25 15 9.13 15 10.5V15Z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2C5.58 2 2 5.58 2 10C2 13.54 4.29 16.53 7.47 17.59C7.87 17.66 8.02 17.42 8.02 17.21C8.02 17.02 8.01 16.39 8.01 15.72C6 16.09 5.48 15.22 5.32 14.78C5.23 14.55 4.84 13.84 4.5 13.65C4.22 13.5 3.82 13.13 4.49 13.12C5.12 13.11 5.57 13.7 5.72 13.94C6.44 15.15 7.59 14.81 8.05 14.6C8.12 14.08 8.33 13.73 8.56 13.53C6.84 13.33 5.04 12.66 5.04 9.69C5.04 8.83 5.23 8.12 5.74 7.57C5.66 7.37 5.38 6.57 5.82 5.48C5.82 5.48 6.49 5.27 8.02 6.3C8.66 6.12 9.34 6.03 10.02 6.03C10.7 6.03 11.38 6.12 12.02 6.3C13.55 5.26 14.22 5.48 14.22 5.48C14.66 6.57 14.38 7.37 14.3 7.57C14.81 8.12 15 8.82 15 9.69C15 12.67 13.19 13.33 11.47 13.53C11.76 13.78 12.01 14.26 12.01 15.01C12.01 16.08 12 16.94 12 17.21C12 17.42 12.15 17.67 12.55 17.59C14.13 17.05 15.49 16 16.42 14.64C17.35 13.28 17.85 11.66 17.84 10C17.84 5.58 14.42 2 10 2Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-visual">
+                    <img src="images/deepfake-ai.jpg" alt="Deepfake AI Detection" class="contact-ai-image">
+                    <div class="image-overlay">
+                        <h3>Fighting Digital Deception</h3>
+                        <p>Advanced AI protecting audio authenticity</p>
+                    </div>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <span class="section-badge">Get In Touch</span>
+                        <h2>Let's <span class="gradient-text">Connect</span></h2>
+                        <p>Have questions about the project or interested in collaboration? Feel free to reach out!</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M3 8L10.89 13.26C11.26 13.5 11.74 13.5 12.11 13.26L20 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:aah.fyp@gmail.com">aah.fyp@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M16 2H4C2.9 2 2 2.9 2 4V16C2 17.1 2.9 18 4 18H16C17.1 18 18 17.1 18 16V4C18 2.9 17.1 2 16 2ZM7 15H5V8H7V15ZM6 7C5.45 7 5 6.55 5 6C5 5.45 5.45 5 6 5C6.55 5 7 5.45 7 6C7 6.55 6.55 7 6 7ZM15 15H13V11.5C13 10.95 12.55 10.5 12 10.5C11.45 10.5 11 10.95 11 11.5V15H9V8H11V9C11.55 8.55 12.22 8.25 13 8.25C14.38 8.25 15 9.13 15 10.5V15Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>LinkedIn</h4>
+                                    <p class="linkedin-links">
+                                        <a href="https://www.linkedin.com/in/aimen-ijaz" target="_blank">Aimen Ijaz</a><br>
+                                        <a href="https://www.linkedin.com/in/hamdosh-latif" target="_blank">Hamdosh Latif</a><br>
+                                        <a href="https://www.linkedin.com/in/ayesha893" target="_blank">Ayesha Javed</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M10 2C5.58 2 2 5.58 2 10C2 13.54 4.29 16.53 7.47 17.59C7.87 17.66 8.02 17.42 8.02 17.21C8.02 17.02 8.01 16.39 8.01 15.72C6 16.09 5.48 15.22 5.32 14.78C5.23 14.55 4.84 13.84 4.5 13.65C4.22 13.5 3.82 13.13 4.49 13.12C5.12 13.11 5.57 13.7 5.72 13.94C6.44 15.15 7.59 14.81 8.05 14.6C8.12 14.08 8.33 13.73 8.56 13.53C6.84 13.33 5.04 12.66 5.04 9.69C5.04 8.83 5.23 8.12 5.74 7.57C5.66 7.37 5.38 6.57 5.82 5.48C5.82 5.48 6.49 5.27 8.02 6.3C8.66 6.12 9.34 6.03 10.02 6.03C10.7 6.03 11.38 6.12 12.02 6.3C13.55 5.26 14.22 5.48 14.22 5.48C14.66 6.57 14.38 7.37 14.3 7.57C14.81 8.12 15 8.82 15 9.69C15 12.67 13.19 13.33 11.47 13.53C11.76 13.78 12.01 14.26 12.01 15.01C12.01 16.08 12 16.94 12 17.21C12 17.42 12.15 17.67 12.55 17.59C14.13 17.05 15.49 16 16.42 14.64C17.35 13.28 17.85 11.66 17.84 10C17.84 5.58 14.42 2 10 2Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>GitHub</h4>
+                                    <a href="https://github.com/aahfyp-commits/deep-fake-audio-detector-backend" target="_blank">Project Repository</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Military College Of Signals, NUST<br>Rawalpindi, Pakistan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="18" stroke="url(#footerGrad)" stroke-width="2"/>
+                            <path d="M15 20C15 20 17 15 20 15C23 15 25 20 25 20C25 20 23 25 20 25C17 25 15 20 15 20Z" fill="url(#footerGrad)"/>
+                            <defs>
+                                <linearGradient id="footerGrad" x1="0" y1="0" x2="40" y2="40">
+                                    <stop offset="0%" stop-color="#a855f7"/>
+                                    <stop offset="100%" stop-color="#06b6d4"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Signal<span style="color: #06b6d4;">404</span></span>
+                    </div>
+                    <p>Protecting authenticity in the age of AI-generated audio.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Project</h4>
+                        <a href="#about">About</a>
+                        <a href="#anatomy">How It Works</a>
+                        <a href="#detection">Try Demo</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Research Paper</a>
+                        <a href="https://github.com/aahfyp-commits/deep-fake-audio-detector-backend">GitHub Repo</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#team">Team</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Signal404. Final Year Project - All rights reserved.</p>
+                <div class="footer-policies">
+                    <div class="policy-item">
+                        <strong>Privacy:</strong> Audio collected for detection only. Not stored permanently.
+                    </div>
+                    <div class="policy-item">
+                        <strong>Terms:</strong> Academic use. No harmful content permitted.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
