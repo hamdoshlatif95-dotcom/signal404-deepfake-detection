@@ -40,7 +40,7 @@ An advanced AI-powered web application for detecting deepfake audio using machin
 
 1. **Clone the repository**
 ```bash
-   git clone https://github.com/hamdoshlatif95/signal404-deepfake-detection.git
+   git clone https://github.com/hamdoshlatif95-dotcom/signal404-deepfake-detection.git
    cd signal404-deepfake-detection
 ```
 
@@ -181,4 +181,4 @@ signal404-deepfake-detection/
 
 1. Copy your repository URL. It will be:
 ```
-   https://github.com/YOUR_USERNAME/signal404-deepfake-detection
+   https://github.com/hamdoshlatif95-dotcom/signal404-deepfake-detection
